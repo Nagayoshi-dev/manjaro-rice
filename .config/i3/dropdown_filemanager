@@ -1,0 +1,6 @@
+#!/bin/bash
+
+if ! pgrep -f thunar > /dev/null
+then
+    thunar
+fi
