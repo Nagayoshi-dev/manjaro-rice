@@ -110,7 +110,7 @@ echo "Defaults rootpw" >> /etc/sudoers.d/script_generated
 chsh root /bin/zsh
 chsh $USER_NAME /bin/zsh
 echo "exec i3 && exec compton" > /home/$USER_NAME/.xinitrc
-systemctl set-ntp true
+timedatectl set-ntp true
 
 grub-mkconfig -o /boot/grub/grub.cfg
 mkinitcpio -P
