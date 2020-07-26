@@ -1,6 +1,0 @@
-#!/bin/bash
-
-if ! pgrep -f thunderbird > /dev/null
-then
-    thunderbird
-fi

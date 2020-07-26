@@ -1,3 +1,0 @@
-#!/bin/bash
-
-cat $HOME/.config/i3/emoji_list | rofi -dmenu -i -p "Emoji: " | sed "s/ .*//" | xargs xdotool type

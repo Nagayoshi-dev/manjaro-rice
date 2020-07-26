@@ -1,6 +1,0 @@
-#!/bin/bash
-
-if ! pgrep -f gnome-system-monitor > /dev/null
-then
-    gnome-system-monitor
-fi
