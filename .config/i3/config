@@ -122,10 +122,10 @@ bindsym $mod+space		    [con_id="__focused__" instance="^(?!dropdown_).*$"] floa
 bindsym $mod+Shift+space    sticky toggle
 
 # restart i3 config
-bindsym $mod+Shift+c	exec i3-msg reload
+bindsym $mod+Shift+c	reload
 
 # quit session
-bindsym $mod+Escape	exec i3-msg exit
+bindsym $mod+Escape	exit
 
 # lock screen
 #bindsym $mod+x exec /usr/bin/bash -c "i3lock -i <(import -window root - | convert -blur -1x5 - png:-)"
