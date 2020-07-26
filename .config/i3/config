@@ -17,10 +17,8 @@ set $ws9 9
 set $ws10 10
 
 # #---Startup Services---# #
-exec_always --no-startup-id feh --bg-fill $HOME/.config/wallpaper.jpg
+exec_always --no-startup-id feh --bg-fill $HOME/.config/wallpaper.*
 exec_always --no-startup-id $HOME/.config/polybar/launch
-exec_always --no-startup-id /usr/bin/start-pulseaudio-x11
-exec_always --no-startup-id /usr/lib/kdeconnectd
 exec_always --no-startup-id picom
 
 exec --no-startup-id dunst
@@ -49,11 +47,11 @@ for_window [instance="dropdown_(term|calc)"] scratchpad show
 for_window [instance="dropdown_(term|calc)"] move position center ;; scratchpad show
 
 # initialize the dropdowns on X11 startup so they can be used ASAP
-exec --no-startup-id ~/.local/scripts/dropdown_calc
-bindsym $mod+a exec --no-startup-id ~/.local/scripts/dropdown_calc ;; [instance="dropdown_calc"] scratchpad show
+exec --no-startup-id $HOME/.config/i3/dropdown_calc
+bindsym $mod+a exec --no-startup-id $HOME/.config/i3/dropdown_calc ;; [instance="dropdown_calc"] scratchpad show
 
-exec --no-startup-id ~/.local/scripts/dropdown_term
-bindsym $mod+u exec --no-startup-id ~/.local/scripts/dropdown_term ;; [instance="dropdown_term"] scratchpad show
+exec --no-startup-id $HOME/.config/i3/dropdown_term
+bindsym $mod+u exec --no-startup-id $HOME/.config/dropdown_term ;; [instance="dropdown_term"] scratchpad show
 
 # #---Window Behaviors---# #
 # Default aesthetics
@@ -65,10 +63,10 @@ gaps inner 3
 gaps outer 3
 
 # Window resizing
-bindsym $mod+Control+h exec ~/.local/scripts/win_resize up
-bindsym $mod+Control+j exec ~/.local/scripts/win_resize down
-bindsym $mod+Control+k exec ~/.local/scripts/win_resize left
-bindsym $mod+Control+l exec ~/.local/scripts/win_resize right
+bindsym $mod+Control+h exec $HOME/.config/i3/win_resize up
+bindsym $mod+Control+j exec $HOME/.config/i3/win_resize down
+bindsym $mod+Control+k exec $HOME/.config/i3/win_resize left
+bindsym $mod+Control+l exec $HOME/.config/i3/win_resize right
 
 # Titlebar
 for_window [class="^.*"] border pixel 0	# Disables the titlebar
@@ -81,14 +79,6 @@ for_window [window_role="Preferences"] floating enable
 for_window [window_type="dialog"] floating enable
 for_window [window_type="menu"] floating enable
 
-# Specific user programs that should float by default
-#for_window [class="feh"] floating enable
-
-# All windows except Qutebrowser and the terminal should float by default
-#for_window [class="(?!(qutebrowser|st))"] floating enable
-for_window [class="^.*"] floating enable
-for_window [class="^(?i)st$"] floating disable
-for_window [class="^(?i)qutebrowser$"] floating disable
 
 # #---WM tiling controls---# #
 # switch to workspace
@@ -191,9 +181,6 @@ bindsym $mod+Return split horizontal; exec --no-startup-id st
 bindsym $mod+Shift+Return split vertical; exec --no-startup-id st
 
 bindsym $mod+d exec --no-startup-id rofi -show drun
-bindsym $mod+i exec --no-startup-id $HOME/.config/i3/menu_emoji
-bindsym $mod+o exec --no-startup-id $HOME/.config/i3/menu_unicode
-bindsym $mod+w exec --no-startup-id qutebrowser
 
 # #---Normal volume control keys---# #
 bindsym $mod+Shift+minus        exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -5%
@@ -201,7 +188,7 @@ bindsym $mod+Shift+plus         exec --no-startup-id pactl set-sink-volume @DEFA
 bindsym $mod+Shift+BackSpace    exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle
 
 # #---Special Fn/Misc keys---#
-bindsym XF86AudioMute		    exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle
+bindsym XF86AudioMute		exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle
 bindsym XF86AudioLowerVolume	exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -5%
 bindsym XF86AudioRaiseVolume	exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +5%
 
@@ -209,7 +196,7 @@ bindsym XF86MonBrightnessDown	exec --no-startup-id xbacklight -dec 5
 bindsym XF86MonBrightnessUp	exec --no-startup-id xbacklight -inc 5
 
 set $imgname_fmt '%Y-%m-%d___%T___$wx$h.png'
-set $scrot_dir -e 'mv "$f" ~/Pictures/scrot/'
+set $scrot_dir -e 'mv "$f" $HOME/Pictures/scrot/'
 bindsym Print       exec --no-startup-id scrot    $imgname_fmt $scrot_dir
 bindsym Shift+Print exec --no-startup-id scrot -u $imgname_fmt $scrot_dir
 
