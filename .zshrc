@@ -126,6 +126,3 @@ esac
 # User defined preferences begin
 source $HOME/.aliases
 PATH="$PATH:$HOME/.bin"
-
-# Automate ssh-agent startup
-[ -z "$SSH_AUTH_SOCK" ] && eval "$(ssh-agent -s)"
