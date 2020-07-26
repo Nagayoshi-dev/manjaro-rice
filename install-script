@@ -93,7 +93,7 @@ echo "Enter new user password:"
 read USER_PW
 create_user($USER_NAME, $USER_PW)
 
-pacstrap $INSTALL_ROOT base linux linux-firmware cryptsetup efibootmgr git grub intel-ucode iw iwd linux linux-firmware lvm2 networkmanager openssh pulseaudio sudo tmux vim xf86-video-intel xorg i3-gaps dunst mpv feh mpd neofetch rofi tmux compton conky zsh
+pacstrap $INSTALL_ROOT base linux linux-firmware cryptsetup efibootmgr git grub intel-ucode iw iwd linux linux-firmware lvm2 networkmanager openssh pulseaudio sudo tmux vim xf86-video-intel xorg i3-gaps dunst mpv feh mpd neofetch rofi tmux compton conky zsh rxvt-unicode dmenu i3lock xorg-init i3status perl-json-xs perl-anyevent-i3
 
 # genfstab setup
 genfstab -U $INSTALL_ROOT >> $INSTALL_ROOT/etc/fstab
