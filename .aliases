@@ -1,0 +1,49 @@
+alias ls='ls --color=auto'
+alias grep='grep --color=auto'
+alias diff='diff --color=auto'
+
+alias pbcopy='xclip -selection clipboard'
+alias pbpaste='xclip -selection clipboard -o'
+alias pbexec='`xclip -selection clipboard -o`'
+
+alias fc-list='fc-list | grep -i'
+alias fc-clear='fc-list -f -v'
+
+alias D='cd ~/Downloads'
+alias aa='cd ~/Aur'
+alias dd='cd ~/Documents'
+alias gg='cd ~/Github'
+alias pp='cd ~/Pictures'
+alias vv='cd ~/Videos'
+alias C='cd ~/.config'
+
+alias v='vim'
+alias vr='vim -R'
+alias sv='sudo vim'
+alias svr='sudo vim -R'
+
+alias s='sudo'
+
+alias cp="rsync -ah --progress"
+
+alias update-grub='sudo update-grub'
+alias mkinitcpio='sudo mkinitcpio'
+
+alias pm='sudo pacman'
+alias uctl='systemctl --user'
+alias sctl='sudo systemctl'
+
+alias lvs='sudo lvs'
+alias vgs='sudo vgs'
+alias pvs='sudo pvs'
+alias lvdisplay='sudo lvdisplay'
+alias vgdisplay='sudo vgdisplay'
+alias pvdisplay='sudo pvdisplay'
+alias fdisk='sudo fdisk'
+
+alias lsblk='sudo lsblk'
+alias blkid='sudo blkid'
+
+alias shutdown='sudo shutdown -h now'
+alias reboot='sudo reboot'
+alias hibernate='systemctl hibernate'
