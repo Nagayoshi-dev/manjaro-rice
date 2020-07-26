@@ -111,6 +111,8 @@ chsh root /bin/zsh
 chsh $USER_NAME /bin/zsh
 echo "exec i3 && exec compton" > /home/$USER_NAME/.xinitrc
 timedatectl set-ntp true
+systemctl enable NetworkManager
+systemctl start NetworkManager
 
 grub-mkconfig -o /boot/grub/grub.cfg
 mkinitcpio -P
