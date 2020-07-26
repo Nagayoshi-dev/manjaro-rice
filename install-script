@@ -1,0 +1,125 @@
+#!/usr/bin/env bash
+
+prompt_confirmation() {
+	read CHOICE
+
+	case $CHOICE in
+		y) ;;
+		Y) ;;
+		*) exit 1;;
+	esac
+}
+
+chroot_error_check() {
+	if [ "$(stat -c %d:%i /)" != "$(stat -c %d:%i /proc/1/root/.)" ]; then
+		echo "Error: function create_user() must run outside of chroot."
+		exit 1
+	fi
+}
+
+root_priv_error_check() {
+	if [ $uid -neq 0 ]; then
+		echo "Error: This script requires root privileges."
+		exit 1
+	fi
+}
+
+num_args_error_check() {
+	NUM_ARGS_PASSED=$1
+	NUM_ARGS_EXPECTED=$2
+	ERROR_MSG=$3
+
+	if [ $1 -neq $2 ]; then
+		echo "$ERROR_MSG"
+		exit 1
+	fi	
+}
+
+create_user() {
+	chroot_error_check()
+	num_args_error_check($#, 2, "Error: failed assertion, create_user() expected 2 args.")
+
+	USER=$1
+	PW=$2
+
+	useradd -G wheel -m $USER
+	if [ $? -eq $(true) ]; then
+		echo "User $USER successfully created."
+	else
+		echo "Failed to create user $USER. Skip creating user."
+		return 1
+	fi
+
+	echo "$USER:$PW" | chpasswd -R $INSTALL_ROOT
+	if [ $? -eq $(true) ]; then
+		echo "Password successfully set for user $USER"
+	else
+		echo "Failed to set password for $USER. No password will be set."
+		return 1
+	fi
+
+	return 0
+}
+
+set_rootpw() {
+	chroot_error_check()
+	chpasswd "root:$1"
+	if [ $? -eq $(true) ]; then
+		echo "Successfully set root password."
+	else
+		echo "Failed to set root password. No root password will be set."
+	fi
+}
+
+chroot_error_check()
+root_priv_error_check()
+num_args_error_check($#, 1, "Usage: $0 <target instal root>")
+
+INSTALL_ROOT=$1
+
+echo "You specified $INSTALL_ROOT as the target install directory. Continue? y/N"
+prompt_confirmation()
+echo "Have you made sure everything is mounted correctly? y/N"
+prompt_confirmation()
+echo "Have you made appropriate changes to $INSTALL_ROOT/etc/mkinitcpio.conf and $INSTALL_ROOT/etc/default/grub? This is necessary to ensure your kernel and bootloader are installed correctly."
+
+echo "Enter new root password: "
+read ROOT_PW
+set_rootpw($ROOT_PW)
+
+echo "Enter new user name:"
+read USER_NAME
+echo "Enter new user password:"
+read USER_PW
+create_user($USER_NAME, $USER_PW)
+
+pacstrap $INSTALL_ROOT base linux linux-firmware cryptsetup efibootmgr git grub intel-ucode iw iwd linux linux-firmware lvm2 networkmanager openssh pulseaudio sudo tmux vim xf86-video-intel xorg i3-gaps dunst mpv feh mpd neofetch rofi tmux compton conky zsh
+
+# genfstab setup
+genfstab -U $INSTALL_ROOT >> $INSTALL_ROOT/etc/fstab
+
+# chroot inside and set up rest of the configs
+arch-chroot $INSTALL_ROOT
+
+echo "en_US.UTF8 UTF8" >> /etc/locale.gen
+locale-gen
+ln -sf /usr/share/zoneinfo/America/Toronto /etc/localtime
+hwclock --systohc
+echo "%wheel ALL=(ALL) ALL, !/usr/bin/su" > /etc/sudoers.d/script_generated
+echo "Defaults rootpw" >> /etc/sudoers.d/script_generated
+chsh root /bin/zsh
+chsh $USER_NAME /bin/zsh
+echo "exec i3 && exec compton" > /home/$USER_NAME/.xinitrc
+
+grub-mkconfig -o /boot/grub/grub.cfg
+mkinitcpio -P
+# it's an UEFI system
+
+# install fonts
+# set up .zshrc
+# set up .xinitrc
+# set up .tmux
+# set up shell aliases
+
+echo "Script finished. Enjoy your new rice setup!"
+exit 0
