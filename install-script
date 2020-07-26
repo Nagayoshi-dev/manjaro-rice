@@ -93,7 +93,7 @@ echo "Enter new user password:"
 read USER_PW
 create_user($USER_NAME, $USER_PW)
 
-pacstrap $INSTALL_ROOT base base-devel linux linux-firmware cryptsetup efibootmgr git grub intel-ucode iw iwd linux linux-firmware lvm2 networkmanager network-manager-applet openssh pulseaudio sudo tmux vim xf86-video-intel xorg i3-gaps dunst mpv feh mpd neofetch rofi tmux conky zsh rxvt-unicode dmenu i3lock xorg-init i3status perl-json-xs perl-anyevent-i3 chromium
+pacstrap $INSTALL_ROOT base base-devel linux linux-firmware cryptsetup efibootmgr git grub intel-ucode iw iwd linux linux-firmware lvm2 networkmanager network-manager-applet openssh pulseaudio sudo tmux vim xf86-video-intel xorg i3-gaps dunst mpv feh mpd neofetch rofi tmux conky zsh rxvt-unicode dmenu i3lock xorg-init i3status perl-json-xs perl-anyevent-i3 chromium man-db man-pages
 
 # Install all of Google's font packages, since it gives great coverage
 pacstrap $INSTALL_ROOT noto-fonts noto-fonts-cjk noto-fonts-emoji ttf-caladea ttf-carlito ttf-droid ttf-roboto
@@ -114,14 +114,18 @@ systemctl set-ntp true
 
 grub-mkconfig -o /boot/grub/grub.cfg
 mkinitcpio -P
-# it's an UEFI system
-# ... or a BIOS system
+if [ -d "/sys/firmware/efi/efivars" ]; then
+	mkdir /boot/efi
+	grub-install --target=x86_64-efi --efi-directory=/boot/efi --bootloader-id="SCRIPT_GRUB"
+else
+	# get block device name without the trailing partition number
+	BLOCK_DEVICE=$(df /boot/grub | tail -n 1 | awk '{print $1;}' | tr -d '0123456789')
+	grub-install --target=i386-pc $BLOCK_DEVICE
+fi
 
 # install fonts
 # install suckless terminal
-# install picom desktop compositor 
 # set up .zshrc
-# set up .xinitrc
 # set up .tmux
 # set up shell aliases
 # set up MIME cache
