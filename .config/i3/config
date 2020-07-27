@@ -16,9 +16,27 @@ set $ws8 8
 set $ws9 9
 set $ws10 10
 
+# #---i3bar config---# #
+bar {
+    i3bar_command i3bar -t
+    status_command i3blocks
+    position top
+
+    tray_output primary
+    tray_padding 0
+    font pango:Noto Sans Mono 10
+    binding_mode_indicator yes
+    separator_symbol "|"
+
+    colors {
+        background #111111cc
+        separator  #111111cc
+        statusline #ffffff
+    }
+}
+
 # #---Startup Services---# #
 exec_always --no-startup-id feh --bg-fill $HOME/.config/wallpaper.*
-exec_always --no-startup-id $HOME/.config/polybar/launch
 exec_always --no-startup-id picom
 
 exec --no-startup-id dunst
@@ -122,7 +140,7 @@ bindsym $mod+space		    [con_id="__focused__" instance="^(?!dropdown_).*$"] floa
 bindsym $mod+Shift+space    sticky toggle
 
 # restart i3 config
-bindsym $mod+Shift+c	reload
+bindsym $mod+Shift+c	restart
 
 # quit session
 bindsym $mod+Escape	exit
