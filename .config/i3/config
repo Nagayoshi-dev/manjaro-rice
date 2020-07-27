@@ -24,7 +24,7 @@ bar {
 
     tray_output primary
     tray_padding 0
-    font pango:Noto Sans Mono 10
+    font pango:Noto Sans Mono 10, Font Awesome 5 Free
     binding_mode_indicator yes
     separator_symbol "|"
 
