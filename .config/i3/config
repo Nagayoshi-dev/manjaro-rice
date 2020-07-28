@@ -69,10 +69,21 @@ gaps inner 3
 gaps outer 3
 
 # Window resizing
-bindsym $mod+Control+h exec $HOME/.config/i3/win_resize up
-bindsym $mod+Control+j exec $HOME/.config/i3/win_resize down
-bindsym $mod+Control+k exec $HOME/.config/i3/win_resize left
-bindsym $mod+Control+l exec $HOME/.config/i3/win_resize right
+set $RESIZE_MODE "WINDOW RESIZE_MODE: [h|j|k|l] to resize, [Esc|Enter] to exit"
+
+bindsym $mod+r mode $RESIZE_MODE
+mode $RESIZE_MODE {
+    set $COMMAND exec $HOME/.config/i3/win_resize
+
+    bindsym h $COMMAND left    # shrinks window size left
+    bindsym j $COMMAND down    # expands window size down
+    bindsym k $COMMAND up      # shrinks window size up
+    bindsym l $COMMAND right   # expands window size right
+
+    # Hit Esc or Enter key to exit resize mode
+    bindsym Escape mode "default"
+    bindsym Return mode "default"
+}
 
 # Application windows which are usually designed by devs to float by default
 for_window [window_role="pop-up"] floating enable
