@@ -6,9 +6,6 @@ alias pbcopy='xclip -selection clipboard'
 alias pbpaste='xclip -selection clipboard -o'
 alias pbexec='`xclip -selection clipboard -o`'
 
-alias fc-list='fc-list | grep -i'
-alias fc-clear='fc-list -f -v'
-
 alias D='cd ~/Downloads'
 alias aa='cd ~/Aur'
 alias dd='cd ~/Documents'
