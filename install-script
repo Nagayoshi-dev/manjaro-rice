@@ -98,6 +98,14 @@ pacstrap $INSTALL_ROOT base base-devel linux linux-firmware cryptsetup efibootmg
 # Install all of Google's font packages, since it gives great coverage
 pacstrap $INSTALL_ROOT noto-fonts noto-fonts-cjk noto-fonts-emoji ttf-caladea ttf-carlito ttf-droid ttf-roboto
 
+# Complete Nerd Fonts collection - contains Powerline glyphs, Font Awesome,
+#and  lots of monospace programming fonts (note: this package is 4GB in size)
+git clone https://aur.archlinux.org/nerd-fonts-complete.git
+cd nerd-fonts-complete
+makepkg -si
+cd ..
+rm -rf nerd-fonts-complete
+
 genfstab -U $INSTALL_ROOT >> $INSTALL_ROOT/etc/fstab
 
 arch-chroot $INSTALL_ROOT
