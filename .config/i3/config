@@ -23,8 +23,8 @@ set $ws10 10
 
 # #---Startup Services---# #
 exec_always --no-startup-id feh --bg-fill $HOME/.config/wallpaper.*
-exec_always --no-startup-id picom
-exec_always --no-startup-id yabar
+exec_always --no-startup-id pkill picom && picom
+exec_always --no-startup-id pkill yabar && yabar
 
 exec --no-startup-id dunst
 exec --no-startup-id nm-applet
