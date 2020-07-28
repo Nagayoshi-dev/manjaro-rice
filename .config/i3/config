@@ -140,7 +140,7 @@ bindsym $mod+space		    [con_id="__focused__" instance="^(?!dropdown_).*$"] floa
 bindsym $mod+Shift+space    sticky toggle
 
 # restart i3 config
-bindsym $mod+Shift+c	restart
+bindsym $mod+Shift+c	reload ;; restart
 
 # quit session
 bindsym $mod+Escape	exit
