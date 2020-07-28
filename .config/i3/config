@@ -24,7 +24,7 @@ set $ws10 10
 # #---Startup Services---# #
 exec_always --no-startup-id feh --bg-fill $HOME/.config/wallpaper.*
 exec_always --no-startup-id "pgrep picom || picom"  # launch only if no existing picom
-exec_always --no-startup-id "pgrep yabar || yabar"  # launch only if no existing yabar
+exec_always --no-startup-id "pgrep polybar || polybar -c ~/.config/polybar/config.ini top"  # launch only if no existing polybar
 
 exec --no-startup-id dunst
 exec --no-startup-id nm-applet
