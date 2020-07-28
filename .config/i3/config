@@ -1,5 +1,10 @@
 # vim: filetype=i3
 
+# #---Color Palette---# #
+set $main       #FF69B4
+set $alt        #FFFAFF
+set $border     #454545
+
 # #---Beginning Definitions---# #
 set $mod mod4
 floating_modifier $mod
@@ -45,10 +50,11 @@ exec --no-startup-id nm-applet
 # #---Giving applications the ability to run as root---# #
 #exec_always --no-startup-id /usr/lib/x86_64-linux-gnu/polkit-mate/polkit-mate-authentication-agent-1
 
-# #---Color Palette---# #
-set $main	#FF69B4
-set $alt	#FFFAFF
-set $border #454545
+# #---i3 window border styling---# #
+for_window [class=".*"] border pixel 3
+
+# Disables the titlebar, uncomment this line to re-enable
+# for_window [class="^.*"] border pixel 0	
 
 # class                 border  bground text    indic.	child_border
 client.focused          $main	$main	$alt	$main	$main
@@ -85,9 +91,6 @@ bindsym $mod+Control+h exec $HOME/.config/i3/win_resize up
 bindsym $mod+Control+j exec $HOME/.config/i3/win_resize down
 bindsym $mod+Control+k exec $HOME/.config/i3/win_resize left
 bindsym $mod+Control+l exec $HOME/.config/i3/win_resize right
-
-# Titlebar
-for_window [class="^.*"] border pixel 0	# Disables the titlebar
 
 # Application windows which are usually designed by devs to float by default
 for_window [window_role="pop-up"] floating enable
