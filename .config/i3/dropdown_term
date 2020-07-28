@@ -1,6 +1,0 @@
-#!/bin/bash
-
-if ! pgrep -f "dropdown_terminal" > /dev/null
-then
-    kitty --name "dropdown_terminal"
-fi
