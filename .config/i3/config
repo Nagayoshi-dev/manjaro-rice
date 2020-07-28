@@ -21,28 +21,10 @@ set $ws8 8
 set $ws9 9
 set $ws10 10
 
-# #---i3bar config---# #
-bar {
-    i3bar_command i3bar -t
-    status_command i3blocks
-    position top
-
-    tray_output primary
-    tray_padding 0
-    font pango:Noto Sans Mono 10, Font Awesome 5 Free
-    binding_mode_indicator yes
-    separator_symbol "|"
-
-    colors {
-        background #111111cc
-        separator  #111111cc
-        statusline #ffffff
-    }
-}
-
 # #---Startup Services---# #
 exec_always --no-startup-id feh --bg-fill $HOME/.config/wallpaper.*
 exec_always --no-startup-id picom
+exec_always --no-startup-id yabar
 
 exec --no-startup-id dunst
 exec --no-startup-id nm-applet
