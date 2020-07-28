@@ -1,0 +1,16 @@
+#!/bin/bash
+
+# NOTE: DO NOT CHANGE SCRIPT NAME TO CONTAIN "dropdown_calc"!!!
+#       ... In other words, script name SHOULD NOT contain the
+#       substring "dropdown_calc" anywhere in its name.
+#
+#       This would break the script if you do, because it messes up
+#       pgrep's pattern matching. Also, pgrep does not and is not
+#       smart enough to take regex as input, so I couldn't fix the
+#       pgrep command below.
+#
+
+if ! pgrep -f "dropdown_calculator" > /dev/null
+then
+    kitty --name "dropdown_calculator" -e "qalc"
+fi
