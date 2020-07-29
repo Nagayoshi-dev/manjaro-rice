@@ -10,5 +10,5 @@
 
 if ! pgrep -f "dropdown_calc" > /dev/null
 then
-    st -n "dropdown_calc" -e "qalc"
+    st -n "dropdown_calc" -e qalc
 fi
