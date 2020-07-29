@@ -26,8 +26,10 @@ exec_always --no-startup-id feh --bg-fill $HOME/.config/wallpaper.*
 exec_always --no-startup-id "pgrep picom || picom"  # launch only if no existing picom
 exec_always --no-startup-id "pgrep polybar || polybar -c ~/.config/polybar/config.ini top"  # launch only if no existing polybar
 
-exec --no-startup-id dunst
-exec --no-startup-id nm-applet
+exec --no-startup-id dunst      # DBus notifications service
+exec --no-startup-id nm-applet  # Network Manager system tray applet
+exec --no-startup-id pactl load-module module-bluetooth-policy      # bluetooth service
+exec --no-startup-id pactl load-module module-bluetooth-discover    # bluetooth service
 
 # #---Giving applications the ability to run as root---# #
 #exec_always --no-startup-id /usr/lib/x86_64-linux-gnu/polkit-mate/polkit-mate-authentication-agent-1
