@@ -10,5 +10,5 @@
 
 if ! pgrep -f "dropdown_calc" > /dev/null
 then
-    st -n "dropdown_calc" -e sh -c 'echo "Hint: press Ctrl+L at anytime to clear the screen." && qalc'
+    st -n "dropdown_calc" -e sh -c 'echo -e "Hint: press Ctrl+L to clear all the text in this terminal window!\n" && qalc'
 fi
