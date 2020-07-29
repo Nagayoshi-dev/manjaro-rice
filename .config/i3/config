@@ -177,10 +177,17 @@ bindsym $mod+Down		focus down
 bindsym $mod+Up			focus up
 bindsym $mod+Right 		focus right
 
-bindsym $mod+Shift+Left		move left
-bindsym $mod+Shift+Down		move down
-bindsym $mod+Shift+Up		move up
-bindsym $mod+Shift+Right 	move right
+set $FLOAT_MOVEMENT_MODE "FLOAT MOVEMENT MODE: [h|j|k|l] to move focused window, [Esc|Enter] to exit"
+bindsym $mod+f  [con_id="__focused__" floating] mode $FLOAT_MOVEMENT_MODE
+mode $FLOAT_MOVEMENT_MODE {
+    bindsym h move left
+    bindsym j move down
+    bindsym k move up
+    bindsym l move right
+
+    bindsym Escape mode "default"
+    bindsym Return mode "default"
+}
 
 # vim-style bindings
 bindsym $mod+h			focus left
