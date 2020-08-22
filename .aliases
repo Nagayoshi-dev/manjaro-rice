@@ -21,23 +21,9 @@ alias s='sudo'
 
 alias cp="rsync -ah --progress"
 
-alias update-grub='sudo update-grub'
-alias mkinitcpio='sudo mkinitcpio'
-
 alias pm='sudo pacman'
 alias uctl='systemctl --user'
 alias sctl='sudo systemctl'
-
-alias lvs='sudo lvs'
-alias vgs='sudo vgs'
-alias pvs='sudo pvs'
-alias lvdisplay='sudo lvdisplay'
-alias vgdisplay='sudo vgdisplay'
-alias pvdisplay='sudo pvdisplay'
-alias fdisk='sudo fdisk'
-
-alias lsblk='sudo lsblk'
-alias blkid='sudo blkid'
 
 alias shutdown='sudo shutdown -h now'
 alias reboot='sudo reboot'
