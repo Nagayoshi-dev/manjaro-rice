@@ -17,6 +17,13 @@ alias vr='vim -R'
 alias sv='sudo vim'
 alias svr='sudo vim -R'
 
+alias cfi='vim ~/.config/i3/config && i3-msg restart'
+alias cfp='vim ~/.config/polybar/config.ini && ~/.config/polybar/launch'
+alias cfrofi='vim ~/.config/rofi/config'
+alias cfdunst='vim ~/.config/dunst/dunstrc && ~/.config/dunst/launch'
+alias cffeh='vim ~/.config/feh/keys'
+alias cfpicom='vim ~/.config/picom/picom.conf'
+
 alias s='sudo'
 
 alias cp="rsync -ah --progress"
