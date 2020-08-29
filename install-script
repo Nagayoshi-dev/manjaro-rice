@@ -130,6 +130,8 @@ systemctl start NetworkManager
 echo "load-module module-bluetooth-policy" >> /etc/pulse/system.pa
 echo "load-module module-bluetooth-discover" >> /etc/pulse/system.pa
 echo "load-module module-switch-on-connect" >> /etc/pulse/system.pa
+systemctl enable bluetooth
+systemctl start bluetooth
 
 grub-mkconfig -o /boot/grub/grub.cfg
 mkinitcpio -P
