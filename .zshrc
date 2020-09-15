@@ -80,6 +80,10 @@ bindkey '^[[B' history-substring-search-down
 
 # User defined preferences begin
 #
-source $HOME/.aliases
+[ -f $HOME/.aliases        ] && source $HOME/.aliases
+[ -f $HOME/.aliases-i3     ] && source $HOME/.aliases-i3
+[ -f $HOME/.aliases-pacman ] && source $HOME/.aliases-pacman
+[ -f $HOME/.zsh_theme      ] && source $HOME/.zsh_theme
+
 umask 006
 PATH="$PATH:$HOME/.bin"
