@@ -201,4 +201,4 @@ esac
 #
 source $HOME/.aliases
 umask 006
-PATH="$PATH:~/.bin"
+PATH="$PATH:$HOME/.bin"
