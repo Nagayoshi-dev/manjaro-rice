@@ -1,3 +1,12 @@
-autoload -Uz promptinit
-promptinit
-prompt suse
+if [ $uid -neq 0 ]; then
+	# non-root user prompt
+	autoload -Uz promptinit
+	promptinit
+	prompt suse
+else
+	# root user prompt
+	PROMPT="[%n@%m %1~]# %{$reset_color%"
+
+	# Right prompt with exit status of previous command if not successful
+ 	RPROMPT="%{$fg[red]%} %(?..[%?])" 
+fi
