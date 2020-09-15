@@ -1,0 +1,6 @@
+alias cfi='nvim ~/.config/i3/config && i3-msg restart'
+alias cfp='nvim ~/.config/polybar/config.ini && ~/.config/polybar/launch'
+alias cfrofi='nvim ~/.config/rofi/config'
+alias cfdunst='nvim ~/.config/dunst/dunstrc && ~/.config/dunst/launch'
+alias cffeh='nvim ~/.config/feh/keys'
+alias cfpicom='nvim ~/.config/picom/picom.conf'

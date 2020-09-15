@@ -21,18 +21,10 @@ alias sv='sudo nvim'
 alias svim='sudo nvim'
 alias svr='sudo nvim -R'
 
-alias cfi='nvim ~/.config/i3/config && i3-msg restart'
-alias cfp='nvim ~/.config/polybar/config.ini && ~/.config/polybar/launch'
-alias cfrofi='nvim ~/.config/rofi/config'
-alias cfdunst='nvim ~/.config/dunst/dunstrc && ~/.config/dunst/launch'
-alias cffeh='nvim ~/.config/feh/keys'
-alias cfpicom='nvim ~/.config/picom/picom.conf'
-
 alias s='sudo'
 
 alias cp="rsync -ah --progress"
 
-alias pm='sudo pacman'
 alias uctl='systemctl --user'
 alias sctl='sudo systemctl'
 
