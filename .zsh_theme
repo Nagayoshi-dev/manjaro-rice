@@ -1,4 +1,4 @@
-if [ $uid -neq 0 ]; then
+if [[ $UID -ne 0 ]]; then
 	# non-root user prompt
 	autoload -Uz promptinit
 	promptinit
