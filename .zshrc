@@ -22,9 +22,10 @@ zstyle ':completion:*' cache-path ~/.zsh/cache
 HISTFILE=~/.zhistory
 HISTSIZE=10000
 SAVEHIST=500
-export EDITOR=/usr/bin/nvim
-export VISUAL=/usr/bin/nvim
+export EDITOR=/usr/bin/vim
+export VISUAL=/usr/bin/vim
 WORDCHARS=${WORDCHARS//\/[&.;]}                                 # Don't consider certain characters part of the word
+
 
 ## Keybindings section
 bindkey -e
@@ -53,8 +54,18 @@ bindkey '^[[1;5C' forward-word                                  #
 bindkey '^H' backward-kill-word                                 # delete previous word with ctrl+backspace
 bindkey '^[[Z' undo                                             # Shift+tab undo last action
 
+# Theming section  
+autoload -U compinit colors zcalc
+compinit -d
+colors
+
 # enable substitution for prompt
 setopt prompt_subst
+
+# Zsh prompt theme
+autoload -Uz promptinit
+promptinit
+prompt suse
 
 # Color man pages
 export LESS_TERMCAP_mb=$'\E[01;32m'
@@ -65,6 +76,7 @@ export LESS_TERMCAP_so=$'\E[01;47;34m'
 export LESS_TERMCAP_ue=$'\E[0m'
 export LESS_TERMCAP_us=$'\E[01;36m'
 export LESS=-r
+
 
 ## Plugins section: Enable fish style features
 # Use syntax highlighting
@@ -79,11 +91,5 @@ bindkey '^[[A' history-substring-search-up
 bindkey '^[[B' history-substring-search-down
 
 # User defined preferences begin
-#
-[ -f $HOME/.aliases        ] && source $HOME/.aliases
-[ -f $HOME/.aliases-i3     ] && source $HOME/.aliases-i3
-[ -f $HOME/.aliases-pacman ] && source $HOME/.aliases-pacman
-[ -f $HOME/.zsh_theme      ] && source $HOME/.zsh_theme
-
-umask 006
+source $HOME/.aliases
 PATH="$PATH:$HOME/.bin"
