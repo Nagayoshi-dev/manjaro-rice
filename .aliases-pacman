@@ -1,1 +1,2 @@
+alias aa='cd ~/Aur'
 alias pm='sudo pacman'
