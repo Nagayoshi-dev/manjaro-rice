@@ -93,7 +93,7 @@ echo "Enter new user password:"
 read USER_PW
 create_user($USER_NAME, $USER_PW)
 
-pacstrap $INSTALL_ROOT base base-devel linux linux-firmware cryptsetup efibootmgr git grub intel-ucode iw iwd linux linux-firmware lvm2 networkmanager network-manager-applet openssh pulseaudio sudo tmux neovim xf86-video-intel xorg i3-gaps dunst mpv feh mpd neofetch rofi tmux conky zsh rxvt-unicode dmenu i3lock xorg-init i3status perl-json-xs perl-anyevent-i3 chromium man-db man-pages pavucontrol bluez bluez-libs hidapi sbc bluez-utils pulseaudio-bluetooth mtr traceroute bind rsync acpi disk-io xclip libqalculate scrot
+pacstrap $INSTALL_ROOT base base-devel linux linux-firmware cryptsetup efibootmgr git grub intel-ucode iw iwd linux linux-firmware lvm2 networkmanager network-manager-applet openssh pulseaudio sudo tmux neovim xf86-video-intel xorg i3-gaps dunst mpv feh mpd neofetch rofi tmux conky zsh rxvt-unicode dmenu i3lock xorg-init i3status perl-json-xs perl-anyevent-i3 chromium man-db man-pages pavucontrol bluez bluez-libs hidapi sbc bluez-utils pulseaudio-bluetooth mtr traceroute bind rsync acpi disk-io xclip libqalculate scrot gtk-chtheme
 
 # Install all of Google's font packages, since it gives great coverage
 pacstrap $INSTALL_ROOT noto-fonts noto-fonts-cjk noto-fonts-emoji ttf-caladea ttf-carlito ttf-droid ttf-roboto
