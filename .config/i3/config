@@ -35,7 +35,7 @@ exec --no-startup-id pactl load-module module-bluetooth-discover    # bluetooth 
 #exec_always --no-startup-id /usr/lib/x86_64-linux-gnu/polkit-mate/polkit-mate-authentication-agent-1
 
 # #---i3 window border styling---# #
-for_window [class=".*"] border pixel 3
+for_window [class=".*"] border pixel 0
 
 # Disables the titlebar, uncomment this line to re-enable
 # for_window [class="^.*"] border pixel 0	
@@ -203,7 +203,7 @@ bindsym $mod+Shift+l		move right 30
 # #---Application programs---# #
 bindsym $mod+Return split horizontal; exec --no-startup-id st
 bindsym $mod+Shift+Return split vertical; exec --no-startup-id st
-bindsym $mod+w exec --no-startup-id chromium
+bindsym $mod+w exec --no-startup-id firefox
 
 bindsym $mod+d exec --no-startup-id rofi -show drun
 
