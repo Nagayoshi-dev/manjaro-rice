@@ -2,7 +2,7 @@ Defaults rootpw
 Defaults editor=/usr/bin/nvim
 
 root ALL=(ALL) ALL
-%wheel ALL=(ALL) ALL, !/usr/bin/su, !/usr/bin/visudo
+%wheel ALL=(ALL) ALL, !/usr/bin/su
 
 nagayoshi lunaria = (root) NOPASSWD: /usr/bin/shutdown
 nagayoshi lunaria = (root) NOPASSWD: /usr/bin/reboot
